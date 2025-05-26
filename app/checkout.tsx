@@ -37,10 +37,12 @@ const CheckoutPage = () => {
     const [address, setAddress] = useState<string>('');
     const validateData = ()=>{
         if(!fullName || !phone || !address) {
+            alert('Будь ласка, заповніть всі поля.');
             return false;
         }
         const phoneRegex = /^\+380\d{9}$/;
         if(!phoneRegex.test(phone)) {
+            alert('Будь ласка, введіть коректний номер телефону у форматі +380XXXXXXXXX.');
             return false;
         }
         return true;
@@ -48,7 +50,7 @@ const CheckoutPage = () => {
     const handleCheckout = async () => {
         const isValid = validateData();
         if (!isValid) {
-            alert('Будь ласка, заповніть всі поля коректно.');
+            
             return;
         }
         try{
@@ -174,7 +176,6 @@ const CheckoutPage = () => {
                 </Card>
                 <TouchableOpacity style={styles.applePayButton}
                     onPress={handleCheckout}
-                    disabled={!validateData()}
                 >
                     <Text style={styles.applePayText}>Оплатити через Apple Pay</Text>
                 </TouchableOpacity>
