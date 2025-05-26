@@ -36,7 +36,7 @@ const CheckoutPage = () => {
     const [phone, setPhone] = useState<string>('');
     const [address, setAddress] = useState<string>('');
     const validateData = ()=>{
-        if(!fullName || !phone || !address) {
+        if(!fullName || !phone ) {
             alert('Будь ласка, заповніть всі поля.');
             return false;
         }
